@@ -1,0 +1,148 @@
+.register-body{
+    background-color: #090000;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.registration{
+    padding: 110px 30%;
+    height: 90%;
+    min-height: 100vh;
+}
+
+.register-form h1{
+    font-size: 90%;
+    color: white;
+    margin-bottom: 20px;
+}
+.register-form h3 span{
+    color: #fc0050;
+}
+
+.register-form{
+    color: rgb(168, 155, 155);
+    font-size: 20px;
+}
+/*padding for name, email, boxes 
+.register-form form input{
+    color: white;
+    padding: 17px;
+    background-color: #191919;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+}
+*/
+/* Your existing styles */
+.register-form form input {
+    color: white;
+    padding: 17px;
+    background-color: #191919;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.password-toggle {
+    position: relative;
+}
+.password-toggle input {
+    padding-right: 25px; /* To accommodate the eye icon */
+}
+.password-toggle i {
+    position: relative;
+    top: 24%;
+    right:3px;
+    left:4px;
+    transform: translateX(130%);
+    cursor: pointer;
+}
+.register-form h4{
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 20px;
+    color: #fc0050;
+}
+
+.register-body h1 {
+    padding-left: 25px;
+    font-size: 35px;
+    margin-bottom: 30px;
+    color:rgb(179, 166, 150);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+pa
+.register-form form .submitbtn{
+    display: inline-block;
+    background-color: #4b0d21;
+    font-size: 27px;
+    font-weight: 600px;
+    border: 0.9px solid plum;
+    border-radius: 60px;
+    width: 340px;
+    cursor:pointer;
+    transition: ease 0.80s;
+}
+
+.register-form form .submitbtn:hover{
+    border: 2px solid #fc0050;
+    background-color: solid rgb(100, 66, 21);
+    transform: scale(1.0);
+}
+
+
+.location-body{
+    background-color: #191919;
+    color: white;
+}
+
+.location-section{
+    padding: 110px;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.location-heading h1{
+    margin-top: 20px;
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.location-heading h1 span{
+    color: #fc0050;
+}
+
+.location-detail h1{
+    padding-top: 60px;
+    color: #fc0050;
+    font-size: 40px;
+}
+
+.location-detail p{
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.location-img img{
+    height: 400px;
+    width: 400px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+} 
+.pass-toggle {
+    position: relative;
+}
+
+.pass-toggle i {
+    position: relative;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>   
+    <link rel="stylesheet" type="text/css" href="reges.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body class="register-body">
+    <script>
+function togglePasswordVisibility(pass1) {
+    const passwordField = document.getElementById(pass1);
+    const icon = passwordField.nextElementSibling.querySelector('i');
+
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    } else {
+        passwordField.type = 'password';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    }
+}
+function validateForm() {
+  // Get input values
+  const pass1 = document.getElementById('pass1').value;
+  const pass2 = document.getElementById('pass2').value;
+  const mobile = document.getElementById('mobile').value;
+  const firstName = document.getElementById('name1').value;
+  const lastName = document.getElementById('name2').value;
+
+  // Check if passwords match
+  if (pass1 !== pass2) {
+    alert('Passwords do not match');
+    return false;
+  }
+
+  // Check if mobile number is 10 digits
+  if (mobile.length !== 10 || isNaN(mobile)) {
+    alert('Mobile number should be a 10-digit number');
+    return false;
+  }
+
+  // Check if first and last name are not equal
+  if (firstName === lastName) {
+    alert('First name and last name should not be equal');
+    return false;
+  }
+
+  // If all validations pass
+  return true;
+}
+</script>
+<section class="registration">
+    <div class="register-form">
+        <h1>Signup Page</h1>
+        <h3>Welcome to,<span> Rebbecca.in 🤝</span></h3>
+        <form onsubmit="return validateForm()">
+        <input type="text" name="myname1" placeholder="Name" id="name1" required>
+        <input type="text" name="myname2" placeholder="last name" id="name2" required>
+        <input type="email" name="myemail" placeholder="Email-Id" id="" required> 
+        <input type="text" name="mobile" placeholder="Mobile number" id="mobile" required>
+        <input type="password" name="password" placeholder="Enter password" id="pass1" required>
+        
+        <div class="password-toggle">
+            <input type="password" name="password2" placeholder="Confirm password" id="pass2" required>
+            <i class="fas fa-eye-slash" onclick="togglePasswordVisibility('pass1')"></i>
+        </div>
+        <!--<input type="tel" name="myphone" placeholder="Phone No." id="phonenum" required>-->
+        <!--<input type="number" name="myage" placeholder="Age" id="" required>-->
+        <br> <br> 
+        <input type="submit" value="Submit" class="submitbtn">
+    </form>
+    </div>
+
+</section>
