@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        #app {
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>Money Tracker</h2>
+        
+        <input type="text" id="description" placeholder="Description">
+        <input type="number" id="amount" placeholder="Amount">
+        <select id="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+        </select>
+        <!-- Radio buttons for Income and Expense -->
+        <button onclick="addTransaction()">Add Transaction</button>
+        <ul id="transactions"></ul>
+        <p>Total: ₹<span id="total">0</span></p>
+    </div>
+
+    <script>
+        const transactions = [];
+        function addTransaction() {
+            const description = document.getElementById('description').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const type = document.getElementById('type').value;
+
+            if (description && !isNaN(amount)) {
+                transactions.push({ description, amount, type });
+                updateUI();
+                sendToServer({ description, amount, type });
+            }
+
+            document.getElementById('description').value = '';
+            document.getElementById('amount').value = '';
+        }
+        function updateUI() {
+            const transactionsList = document.getElementById('transactions');
+            const totalElement = document.getElementById('total');
+
+            transactionsList.innerHTML = '';
+            let total = 0;
+
+            transactions.forEach((transaction, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<span>${transaction.description}</span><span>${transaction.type === 'income' ? '+' : '-'} ₹${transaction.amount.toFixed(2)}</span>`;
+                transactionsList.appendChild(listItem);
+                
+                if (transaction.type === 'income') {
+                    total += transaction.amount;
+                } else {
+                    total -= transaction.amount;
+                }
+            });
+
+            totalElement.textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

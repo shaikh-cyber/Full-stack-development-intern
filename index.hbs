@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="style/css" href="/public/index.css">
+    <title>Money Tracker</title> 
+</head>
+<body>
+    <div id="app">
+        <h2>Money Tracker</h2>
+        <form action="/index" method="POST">        
+        <input type="text" id="description" placeholder="Description">
+        <input type="number" id="amount" placeholder="Amount">
+        <select id="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+        </select>
+        <!-- Radio buttons for Income and Expense -->
+        <input type="radio" name="type" value="income" id="income" checked>
+        <label for="income">Income</label>
+        <input type="radio" name="type" value="expense" id="expense">
+        <label for="expense">Expense</label>
+        <button onsubmit="addTransaction()">Add Transaction</button> <!--on submit-->
+        <ul id="transactions"></ul>
+        <p>Total: ₹<span id="total">0</span></p>
+    </div>
+    </form>
+    <script>
+        const transactions = [];
+        function addTransaction() {
+            const description = document.getElementById('description').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const type = document.getElementById('type').value;
+
+            if (description && !isNaN(amount)) {
+                transactions.push({ description, amount, type });
+                updateUI();
+                sendToServer({ description, amount, type });
+            }
+
+            document.getElementById('description').value = '';
+            document.getElementById('amount').value = '';
+        }
+        function updateUI() {
+            const transactionsList = document.getElementById('transactions');
+            const totalElement = document.getElementById('total');
+
+            transactionsList.innerHTML = '';
+            let total = 0;
+
+            transactions.forEach((transaction, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<span>${transaction.description}</span><span>${transaction.type === 'income' ? '+' : '-'} ₹${transaction.amount.toFixed(2)}</span>`;
+                transactionsList.appendChild(listItem);
+                
+                if (transaction.type === 'income') {
+                    total += transaction.amount;
+                } else {
+                    total -= transaction.amount;
+                }
+            });
+
+            totalElement.textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

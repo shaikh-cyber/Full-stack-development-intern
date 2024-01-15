@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Tracker - Confirmation</title>
+    <link rel="stylesheet" type="style/css" href="/public/style.css">
+</head>
+<body>
+    <form action="/home" method="POST">
+        <div id="confirmation">
+        <h2>Transaction Added Successfully</h2>
+        <p>Details of the transaction:</p>
+        <p id="transactionDetails"></p>
+        <button onclick="goBack()">Go Back to Money Tracker</button> 
+    </div>
+</form>
+
+    <script>
+        // Function to go back to the Money Tracker page
+        function goBack() {
+            window.location.href = '/';  // Redirect to the main Money Tracker page
+        }
+
+        // Fetch and display transaction details from localStorage
+        document.addEventListener('DOMContentLoaded', function () {
+            const transactionDetails = JSON.parse(localStorage.getItem('recentTransaction'));
+
+            if (transactionDetails) {
+                const detailsParagraph = document.getElementById('transactionDetails');
+                detailsParagraph.textContent = `Description: ${transactionDetails.description}, Amount: ₹${transactionDetails.amount.toFixed(2)}, Type: ${transactionDetails.type}`;
+            }
+        });
+    </script>
+</body>
+</html>
